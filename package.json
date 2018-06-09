@@ -1,0 +1,27 @@
+{
+  "name": "doanbarber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3ar0n/DoanBarber.git"
+  },
+  "author": "1512501-1512528-1512582",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3ar0n/DoanBarber/issues"
+  },
+  "homepage": "https://github.com/3ar0n/DoanBarber#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "express-handlebars-sections": "^1.0.1",
+    "mysql": "^2.15.0",
+    "path": "^0.12.7"
+  }
+}

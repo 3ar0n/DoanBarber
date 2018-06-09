@@ -1,0 +1,56 @@
+{{#section 'title'}}
+    <title>Đăng ký</title>
+{{/section}}
+
+<form action="" method="POST" class="form-horizontal" role="form" onsubmit="return validate();">
+    <div class="form-group">
+        <label for="txtUsername" class="col-sm-3 control-label" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tên đăng nhập</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="txtUsername" placeholder="Tên đăng nhập" name="username">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="txtPWD" class="col-sm-3 control-label" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mật khẩu</label>
+        <div class="col-sm-4">
+            <input type="password" class="form-control" id="txtPWD" placeholder="Password" name="rawPWD">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="txtName" class="col-sm-3 control-label" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Họ tên</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="txtName" placeholder="Họ tên" name="name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="txtPhone" class="col-sm-3 control-label" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Số điện thoại</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="txtPhone" placeholder="Số điện thoại" name="phone">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="txtEmail" class="col-sm-3 control-label" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="txtEmail" placeholder="Email" name="email">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="txtAddress" class="col-sm-3 control-label" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Địa chỉ</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="txtAddress" placeholder="Địa chỉ" name="adress">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-3">
+            <button type="submit" class="btn btn-success">
+                Đăng ký
+            </button>
+        </div>
+    </div>
+</form>
