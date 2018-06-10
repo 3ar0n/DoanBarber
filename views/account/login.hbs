@@ -2,6 +2,13 @@
     <title>Đăng nhập</title>
 {{/section}}
 
+{{#if showError}}
+<div class="alert alert-danger">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>Title!</strong> {{errorMsg}}
+</div>
+{{/if}}
+
 <form class="form-horizontal" method="post" action="" id="frmLogin">
     <div class="form-group">
         <label for="txtUsername" class="col-sm-3 control-label" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tên đăng nhập</label>
