@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2018 at 11:06 AM
+-- Generation Time: Jun 13, 2018 at 03:56 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -112,30 +112,6 @@ INSERT INTO `booklist` (`bookID`, `username`, `bookTime`, `createTime`, `bookSta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
---
-
-CREATE TABLE `customers` (
-  `username` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='thông tin khách hàng';
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`username`, `fullname`, `phone`, `email`, `address`) VALUES
-('1512501', 'Đặng Quốc Thái', '0969942316', NULL, NULL),
-('1512528', 'Nguyễn Trí Thâm', '0962525633', NULL, NULL),
-('1512582', 'Đoàn Minh Toàn', '01993893379', NULL, NULL),
-('admin', 'admin', '0987654321', NULL, NULL);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `products`
 --
 
@@ -143,6 +119,7 @@ CREATE TABLE `products` (
   `proID` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
   `proName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `proType` int(11) NOT NULL,
+  `proImg` text COLLATE utf8_unicode_ci,
   `proBrand` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `proInfo` text COLLATE utf8_unicode_ci,
   `proPrice` int(11) NOT NULL,
@@ -153,11 +130,11 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`proID`, `proName`, `proType`, `proBrand`, `proInfo`, `proPrice`, `proQuantity`) VALUES
-('sph001', 'Sơn móng tay', 1, 'Sony', 'Bền, đẹp, thơm lâu đến 7 ngày', 50000, 0),
-('sph002', 'Thuốc nhuộm tóc', 2, 'Apple', 'Thiết kế tinh tế, giữ màu tóc đến lần nhuộm sau', 1000000, 2),
-('sph003', 'Sữa rửa mặt', 3, 'Dell', 'Hết nhờn, hết mụn, không gây kích ứng da', 76000, 10),
-('sph004', 'Sữa rửa mặt', 3, 'Asus', 'Giúp da sáng mịn và ngăn ngừa mụn quay trở lại', 58000, 6);
+INSERT INTO `products` (`proID`, `proName`, `proType`, `proImg`, `proBrand`, `proInfo`, `proPrice`, `proQuantity`) VALUES
+('sph001', 'Sơn móng tay', 1, NULL, 'Sony', 'Bền, đẹp, thơm lâu đến 7 ngày', 50000, 0),
+('sph002', 'Thuốc nhuộm tóc', 2, NULL, 'Apple', 'Thiết kế tinh tế, giữ màu tóc đến lần nhuộm sau', 1000000, 2),
+('sph003', 'Sữa rửa mặt', 3, NULL, 'Dell', 'Hết nhờn, hết mụn, không gây kích ứng da', 76000, 10),
+('sph004', 'Sữa rửa mặt', 3, NULL, 'Asus', 'Giúp da sáng mịn và ngăn ngừa mụn quay trở lại', 58000, 6);
 
 -- --------------------------------------------------------
 
@@ -194,18 +171,22 @@ CREATE TABLE `users` (
   `password` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `type` tinyint(1) NOT NULL,
   `block` tinyint(1) NOT NULL,
-  `opendate` date NOT NULL
+  `opendate` date DEFAULT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='thông tin tài khoản';
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `type`, `block`, `opendate`) VALUES
-('1512501', 'user@123', 0, 0, '2018-06-08'),
-('1512528', 'user@123', 0, 0, '2018-06-08'),
-('1512582', 'user@123', 0, 0, '2018-06-08'),
-('admin', 'admin', 1, 0, '2018-06-01');
+INSERT INTO `users` (`username`, `password`, `type`, `block`, `opendate`, `fullname`, `phone`, `email`, `address`) VALUES
+('1512501', 'user@123', 0, 0, '2018-06-08', 'Đặng Quốc Thái', '0969942316', NULL, NULL),
+('1512528', 'user@123', 0, 0, '2018-06-08', 'Nguyễn Trí Thâm', '0962525633', NULL, NULL),
+('1512582', 'user@123', 0, 0, '2018-06-08', 'Đoàn Minh Toàn', '01993893370', NULL, NULL),
+('admin', 'admin', 1, 0, '2018-06-01', 'admin', '0987654321', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -238,12 +219,6 @@ ALTER TABLE `bookdetail`
 ALTER TABLE `booklist`
   ADD PRIMARY KEY (`bookID`),
   ADD KEY `username` (`username`);
-
---
--- Indexes for table `customers`
---
-ALTER TABLE `customers`
-  ADD PRIMARY KEY (`username`);
 
 --
 -- Indexes for table `products`
@@ -292,12 +267,6 @@ ALTER TABLE `bookdetail`
 --
 ALTER TABLE `booklist`
   ADD CONSTRAINT `booklist_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
-
---
--- Constraints for table `customers`
---
-ALTER TABLE `customers`
-  ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
