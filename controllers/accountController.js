@@ -46,13 +46,19 @@ router.post('/register', (req, res) => {
     var today = new Date();
     var todayString = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
+    if (req.body.name === '') {
+        var fullName = 'user_' + req.body.username;
+    } else {
+        var fullName = req.body.name;
+    }
+
     var user = {
         username: req.body.username,
         password: req.body.rawPWD,
         type: 0,
         block: 0,
         opendate: todayString,
-        fullName: req.body.name,
+        fullName: fullName,
         phone: req.body.phone,
         email: req.body.email,
         address: req.body.address
@@ -65,7 +71,36 @@ router.post('/register', (req, res) => {
 
 
 router.get('/profile', restrict, (req, res) => {
-    res.render('account/profile');
+    var user = {
+        username: 'admin'
+    }
+    accountModel.load(user).then(info => {
+        var vm = {
+            User: info,
+        };
+        res.render('account/profile', vm);
+    });
+});
+
+router.post('/profile', restrict, (req, res) => {
+    // tạm thời chưa xét tính đúng sai của mật khẩu cũ
+    if (req.body.newPwd === req.body.cmpPwd) {
+        var user = {
+            password: req.body.newPwd,
+            fullname: req.body.fullname,
+            phone: req.body.phone,
+            address: req.body.address
+        };
+        accountModel.update(user).then(value => {
+            res.render('account/profile');
+        });
+    } else {
+        var vm = {
+            showError: true,
+            errorMsg: 'Update fail'
+        };
+        res.render('account/profile', vm);
+    }
 });
 
 router.post('/logout', (req, res) => {
