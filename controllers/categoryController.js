@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
         var vm = {
             categories: rows
         };
-        console.log(vm.category);
         res.render('category/index', vm);
     });
 });

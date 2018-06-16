@@ -15,8 +15,8 @@ router.get('/byCat/:catId', (req, res) => {
 
     var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
 
-    var p1 = productRepo.loadAllByCat(catId, offset);
-    var p2 = productRepo.countByCat(catId);
+    var p1 = productModel.loadAllByCat(catId, offset);
+    var p2 = productModel.countByCat(catId);
     Promise.all([p1, p2]).then(([pRows, countRows]) => {
         // console.log(pRows);
         // console.log(countRows);
@@ -46,7 +46,7 @@ router.get('/byCat/:catId', (req, res) => {
 
 router.get('/detail/:proId', (req, res) => {
     var proId = req.params.proId;
-    productRepo.single(proId).then(rows => {
+    productModel.single(proId).then(rows => {
         if (rows.length > 0) {
             var vm = {
                 product: rows[0]

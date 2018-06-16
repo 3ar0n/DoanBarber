@@ -17,11 +17,15 @@ router.post('/login', (req, res) => {
 
     accountModel.login(user).then(rows => {
         if (rows.length > 0) {
-            var vm = {
-                showError: true,
-                errorMsg: 'Logined'
-            };
-            res.render('account/login', vm);
+            req.session.isLogged = true;
+            req.session.user = rows[0];
+            req.session.cart = [];
+
+            var url = '/';
+            if (req.query.retUrl) {
+                url = req.query.retUrl;
+            }
+            res.redirect(url);
 
         } else {
             var vm = {

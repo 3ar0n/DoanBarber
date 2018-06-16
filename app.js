@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
+var wnumb = require('wnumb');
 
 
 // Controllers
@@ -26,12 +27,12 @@ app.engine('hbs', exphbs({
     layoutsDir: 'views/_layouts/',
     helpers: {
         section: express_handlebars_sections(),
-        // number_format: n => {
-        //     var nf = wnumb({
-        //         thousand: ','
-        //     });
-        //     return nf.to(n);
-        // }
+        number_format: n => {
+            var nf = wnumb({
+                thousand: ','
+            });
+            return nf.to(n);
+        }
     }
 }));
 app.set('view engine', 'hbs');
@@ -50,7 +51,7 @@ var sessionStore = new MySQLStore({
     port: 3306,
     user: 'root',
     password: '',
-    database: 'qlbh',
+    database: 'barbershop',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -81,7 +82,7 @@ app.get('/', (req, res) => {
 app.use('/home', homeController);
 app.use('/account', accountController);
 app.use('/category', categoryController);
-app.use('/cart', cartController);
+app.use('/cart', restrict, cartController);
 app.use('/product', productController);
 
 app.use(handle404MDW);
