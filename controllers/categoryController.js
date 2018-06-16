@@ -38,13 +38,13 @@ router.get('/delete', (req, res) => {
 });
 
 router.post('/delete', (req, res) => {
-    categoryRepo.delete(req.body.CatId).then(value => {
+    categoryModel.delete(req.body.CatId).then(value => {
         res.redirect('/category');
     });
 });
 
 router.get('/edit', (req, res) => {
-    categoryRepo.single(req.query.id).then(c => {
+    categoryModel.single(req.query.id).then(c => {
     	// console.log(c);
         var vm = {
             Category: c
@@ -54,7 +54,7 @@ router.get('/edit', (req, res) => {
 });
 
 router.post('/edit', (req, res) => {
-    categoryRepo.update(req.body).then(value => {
+    categoryModel.update(req.body).then(value => {
         res.redirect('/category');
     });
 });

@@ -2,6 +2,7 @@
 	Categoriess
 {{/section}}
 
+{{#if layoutVM.curUser.type}}
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -31,6 +32,9 @@
 	<span class="glyphicon glyphicon-plus"></span>
 	Thêm danh mục mới
 </a>
+{{else}}
+do nothing
+{{/if}}
 
 
 
