@@ -6,16 +6,18 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 
-// Models
-const productsModel = require('./models/productModel');
 
 // Controllers
 const   accountController = require('./controllers/accountController'),
         cartController = require('./controllers/cartController'),
         homeController = require('./controllers/homeController'),
-        productController = require('./controllers/productController');
-    
+        productController = require('./controllers/productController'),
+        categoryController = require('./controllers/categoryController');
 
+// Middle-wares
+const   handleLayoutMDW = require('./middle-wares/handleLayout'),
+        handle404MDW = require('./middle-wares/handle404'),
+        restrict = require('./middle-wares/restrict');
 const app = express();
 const port = 3000;
 
@@ -76,8 +78,11 @@ app.get('/', (req, res) => {
 
 app.use('/home', homeController);
 app.use('/account', accountController);
+app.use('/category', categoryController);
 app.use('/cart', cartController);
 app.use('/product', productController);
+
+app.use(handle404MDW);
 
 app.listen(port, () => {
     console.log("Serving on port " + port);

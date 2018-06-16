@@ -1,6 +1,7 @@
 var express = require('express');
 
 var accountModel = require('../models/accountModel');
+var restrict = require('../middle-wares/restrict');
 
 var router = express.Router();
 
@@ -56,6 +57,18 @@ router.post('/register', (req, res) => {
     accountModel.add(user).then(value => {
         res.render('account/register');
     });
+});
+
+
+router.get('/profile', restrict, (req, res) => {
+    res.render('account/profile');
+});
+
+router.post('/logout', (req, res) => {
+    req.session.isLogged = false;
+    req.session.user = null;
+    // req.session.cart = [];
+    res.redirect(req.headers.referer);
 });
 
 module.exports = router;
