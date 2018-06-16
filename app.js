@@ -70,6 +70,8 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.use(handleLayoutMDW);
+
 // -----------
 
 app.get('/', (req, res) => {

@@ -4,10 +4,11 @@ var categoryModel = require('../models/categoryModel');
 var router = express.Router();
 
 router.get('/', (req, res) => {
-    categoryRepo.loadAll().then(rows => {
+    categoryModel.loadAll().then(rows => {
         var vm = {
             categories: rows
         };
+        console.log(vm.category);
         res.render('category/index', vm);
     });
 });
@@ -20,7 +21,7 @@ router.get('/add', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    categoryRepo.add(req.body).then(value => {
+    categoryModel.add(req.body).then(value => {
         var vm = {
             showAlert: true
         };
