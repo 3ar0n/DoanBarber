@@ -66,7 +66,10 @@ router.post('/register', (req, res) => {
     };
 
     accountModel.add(user).then(value => {
-        res.render('account/register');
+        var vm = {
+            done: true
+        }
+        res.render('account/register', vm);
     });
 });
 
