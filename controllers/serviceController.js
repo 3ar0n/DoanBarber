@@ -13,17 +13,14 @@ router.get('/byCat/:catId', (req, res) => {
         page = 1;
     }
 
-    var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
+    var offset = (page - 1) * config.ITEMS_PER_PAGE;
 
     var s1 = serviceModel.loadAllByCat(catId, offset);
     var s2 = serviceModel.countByCat(catId);
     Promise.all([s1, s2]).then(([sRows, countRows]) => {
-        // console.log(sRows);
-        // console.log(countRows);
-
         var total = countRows[0].total;
-        var nPages = total / config.PRODUCTS_PER_PAGE;
-        if (total % config.PRODUCTS_PER_PAGE > 0) {
+        var nPages = total / config.ITEMS_PER_PAGE;
+        if (total % config.ITEMS_PER_PAGE > 0) {
             nPages++;
         }
 
@@ -49,7 +46,7 @@ router.get('/detail/:serId', (req, res) => {
     serviceModel.single(serId).then(rows => {
         if (rows.length > 0) {
             var vm = {
-                service: rows[0]
+                services: rows[0]
             }
             res.render('service/detail', vm);
         } else {

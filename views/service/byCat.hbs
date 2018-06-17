@@ -14,13 +14,13 @@
 	<div class="col-sm-6 col-md-4">
 		<div class="thumbnail">
 			{{!-- <img src="/img/service/{{ProID}}/main_thumbs.jpg" alt="{{ProName}}" title="{{ProName}}"> --}}
-			<img src="/img/service/{{catID}}/{{serID}}.jpg" alt="{{serName}}" title="{{serName}}">
+			<img src="/img/service/{{catID}}/{{serID}}.jpg" alt="{{serName}}" title="{{serName}}" style="width: 330px; height: 218px ">
 			<div class="caption">
 				<h4>{{serName}}</h4>
 				<h4>{{number_format serPrice}}</h4>
-				<p style="min-height: 60px">{{serInfo}}</p>
+				<p style="min-height: 10px">{{{serInfo}}}</p>
 				<p>
-					<a href="/service/detail/{{ProID}}" class="btn btn-primary" role="button">
+					<a href="/service/detail/{{serID}}" class="btn btn-primary" role="button">
 						<span class="glyphicon glyphicon-eye-open"></span>
 						Details
 					</a>

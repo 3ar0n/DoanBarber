@@ -7,12 +7,12 @@ exports.loadAll = () => {
 }
 
 exports.loadAllByCat = (catId, offset) => {
-    var sql = `select * from services where catID = ${catId} limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+    var sql = `select * from services where catID = ${catId} limit ${config.ITEMS_PER_PAGE} offset ${offset}`;
     return database.load(sql);
 }
 
 exports.countByCat = catId => {
-	var sql = `select count(*) as total from services where catID = ${catId}`;
+    var sql = `select count(*) as total from services where catID = ${catId}`;
     return database.load(sql);
 }
 
