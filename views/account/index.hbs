@@ -20,9 +20,17 @@
 		{{#each users}}
 		<tr>
 			<td>{{username}}</td>
-            <td>{{isAdmin}}</td>
+            {{#if isAdmin}}
+			<td>yes</td>
+			{{else}}
+			<td>no</td>
+			{{/if}}
 			<td>{{fullname}}</td>
-            <td>{{gender}}</td>
+            {{#if gender}}
+			<td>nam</td>
+			{{else}}
+			<td>nữ</td>
+			{{/if}}
             <td>{{phone}}</td>
             <td>{{email}}</td>
             <td>{{adress}}</td>
