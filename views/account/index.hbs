@@ -1,0 +1,45 @@
+{{#section 'title'}}
+	Users
+{{/section}}
+
+{{#if layoutVM.curUser.isAdmin}}
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th class="col-md-1">ID</th>
+			<th>Quyền quản trị</th>
+            <th>Họ tên</th>
+            <th>Giới tính</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each users}}
+		<tr>
+			<td>{{username}}</td>
+            <td>{{isAdmin}}</td>
+			<td>{{fullname}}</td>
+            <td>{{gender}}</td>
+            <td>{{phone}}</td>
+            <td>{{email}}</td>
+            <td>{{adress}}</td>
+			<td class="text-right">
+				<a class="btn btn-danger btn-xs" href="#" role="button">
+					<span class="glyphicon glyphicon-remove"></span>
+				</a>
+				<a class="btn btn-primary btn-xs" href="#" role="button">
+					<span class="glyphicon glyphicon-wrench"></span>
+				</a>
+			</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+<a class="btn btn-large btn-block btn-primary" href="/category/add" role="button">
+	<span class="glyphicon glyphicon glyphicon-refresh"></span>
+	Cập nhật
+</a>
+{{/if}}

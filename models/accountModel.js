@@ -19,3 +19,8 @@ exports.load = user => {
     var sql = `select * from users where username = '${user.username}'`;
     return database.load(sql);
 }
+
+exports.loadAll = user => {
+    var sql = `select * from users`;
+    return database.load(sql);
+}
