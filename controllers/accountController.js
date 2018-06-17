@@ -71,15 +71,18 @@ router.post('/register', (req, res) => {
 
 
 router.get('/profile', restrict, (req, res) => {
-    var user = {
-        username: 'admin'
+    var user = req.session.user;
+    console.log(user);
+    var vm = {
+        User: user
     }
-    accountModel.load(user).then(info => {
+    res.render('account/profile', vm);
+    /*accountModel.load(user).then(info => {
         var vm = {
             User: info,
         };
         res.render('account/profile', vm);
-    });
+    });*/
 });
 
 router.post('/profile', restrict, (req, res) => {
