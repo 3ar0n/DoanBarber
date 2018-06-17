@@ -68,27 +68,27 @@
 					{{#if layoutVM.isLogged}}
 					<form id="frmLogout" method="post" action="/account/logout"></form>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/logo/user.png" width="20px" height="20px"> {{layoutVM.curUser.fullname}}
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/logo/user.png" width="20px" height="20px"> <b>{{layoutVM.curUser.fullname}}</b>
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-                            <li><a href="/account/profile">Profile</a></li>
+                            <li><a href="/account/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                             {{#if layoutVM.curUser.isAdmin}}
                             {{else}}
                             <li role="presentation" class="divider"></li>
-                            <li><a href="/cart">Giỏ hàng</a></li>
-                            <li><a href="/book">Đặt chỗ</a></li>
+                            <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a></li>
+                            <li><a href="/book"><span class="glyphicon glyphicon-calendar"></span> Đặt chỗ</a></li>
                             {{/if}}
                             <li role="presentation" class="divider"></li>
-                            <li><a id="lnkLogout" href="javascript:;">Đăng xuất</a></li>
+                            <li><a id="lnkLogout" href="javascript:;"><span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a></li>
                         </ul>
 					</li>
 					{{else}}
 					<li>
-                        <a href="/account/register">Đăng ký</a>				
+                        <a href="/account/register"><span class="glyphicon glyphicon-edit"></span> <b>Đăng ký</b></a>				
 					</li>
 					<li>
-						<a href="/account/login">Đăng nhập</a>
+						<a href="/account/login"><span class="glyphicon glyphicon-log-in"></span> <b>Đăng nhập</b></a>
 					</li>
 					{{/if}}
 				</ul>
@@ -102,10 +102,10 @@
 						<h3 class="panel-title">Dashboard</h3>
 					</div>
 					<div class="list-group">
-						<a href="/account" class="list-group-item">👤 Người dùng</a>
-						<a href="/category" class="list-group-item">📋 Danh mục</a>
-						<a href="/product" class="list-group-item">⭐ Sản phẩm</a>
-                        <a href="/service" class="list-group-item">💄 Dịch vụ</a>
+						<a href="/account" class="list-group-item"><span class="glyphicon glyphicon-user"></span> Người dùng</a>
+						<a href="/category" class="list-group-item"><span class="glyphicon glyphicon-th-list"></span> Danh mục</a>
+						<a href="/product" class="list-group-item"><span class="glyphicon glyphicon-tags"></span> Sản phẩm</a>
+                        <a href="/service" class="list-group-item"><span class="glyphicon glyphicon-scissors"></span> Dịch vụ</a>
 					</div>
 				</div>
         {{else}}
@@ -121,7 +121,7 @@
             <li><a href="/product/byCat/{{catID}}"><b>{{catName}}</b></a></li>
             {{/if}} {{/each}}
             <li>
-                <a href="/home/about">Giới thiệu</a>
+                <a href="/home/about"><b>Giới thiệu</b></a>
             </li>
         </ul>
         {{/if}}
