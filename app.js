@@ -13,6 +13,7 @@ const   accountController = require('./controllers/accountController'),
         cartController = require('./controllers/cartController'),
         homeController = require('./controllers/homeController'),
         productController = require('./controllers/productController'),
+        serviceController = require('./controllers/serviceController'),
         categoryController = require('./controllers/categoryController');
 
 // Middle-wares
@@ -84,6 +85,7 @@ app.use('/account', accountController);
 app.use('/category', categoryController);
 app.use('/cart', restrict, cartController);
 app.use('/product', productController);
+app.use('/service', serviceController);
 
 app.use(handle404MDW);
 

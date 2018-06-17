@@ -1,25 +1,26 @@
 {{#section 'title'}}
-	Product List
+	Dịch vụ
 {{/section}}
 
-{{#if noProducts}}
+{{#if noServices}}
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-lg-12">
-		Không có sản phẩm thoả yêu cầu.
+		Không có dịch vụ thoả yêu cầu.
 	</div>
 </div>
 {{else}}
 <div class="row">
-	{{#each products}}
+	{{#each services}}
 	<div class="col-sm-6 col-md-4">
 		<div class="thumbnail">
-			<img src="/imgs/sp/{{ProID}}/main_thumbs.jpg" alt="{{ProName}}" title="{{ProName}}">
+			{{!-- <img src="/img/service/{{ProID}}/main_thumbs.jpg" alt="{{ProName}}" title="{{ProName}}"> --}}
+			<img src="/img/service/{{catID}}/{{serID}}.jpg" alt="{{serName}}" title="{{serName}}">
 			<div class="caption">
-				<h4>{{ProName}}</h4>
-				<h4>{{number_format Price}}</h4>
-				<p style="min-height: 60px">{{TinyDes}}</p>
+				<h4>{{serName}}</h4>
+				<h4>{{number_format serPrice}}</h4>
+				<p style="min-height: 60px">{{serInfo}}</p>
 				<p>
-					<a href="/product/detail/{{ProID}}" class="btn btn-primary" role="button">
+					<a href="/service/detail/{{ProID}}" class="btn btn-primary" role="button">
 						<span class="glyphicon glyphicon-eye-open"></span>
 						Details
 					</a>
