@@ -2,4 +2,9 @@
     Trang chủ
 {{/section}}
 
-<div style="padding-top:15px"><img src="img/img-1.png"></div>
+<div style="padding-top:15px">
+    {{#if layoutVM.curUser.isAdmin}}
+    {{else}}
+    <img src="img/img-1.png">
+    {{/if}}
+</div>

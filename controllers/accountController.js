@@ -82,7 +82,7 @@ router.get('/profile', restrict, (req, res) => {
     //     res.render('account/profile', vm);
     // });
     var user = req.session.user;
-    console.log(user);
+    //console.log(user);
     var vm = {
          User: user
      }
