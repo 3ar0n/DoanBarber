@@ -11,21 +11,10 @@ body{
 	margin: 0;
 	padding: 0;
 }
-.navbar-default{
-	margin-bottom: 0;
-}
-.navbar-header .navbar-brand{
-	padding-top: 0;
-	padding-bottom: 5px;
-	padding-left: 50px;
-	padding-right: 50px;
-}
-.navbar-header .navbar-brand img{
-	height: 47px;
-}
 .col-md-2 {
 	padding-left: 0;
 	padding-right: 0;
+	margin-top: 50px;
 	position: fixed;
 }
 .col-md-2 ul li a{
@@ -47,8 +36,43 @@ body{
 	width: 100%;
 }
 
-.form-potision{
-	padding-top: 50px;
-	padding-left: 29%;
-	background-color: antiquewhite;
+input[type=text] {
+    width: 395px;
+	height: 30px;
+	border-radius: 5px;
+	border: 0.3px solid #95a5a6;
+	float: left;
+}
+.search-box{
+	padding-top: 0px;
+	left: 40%;
+	padding-left: 270px;
+	width: 745px;
+	margin: 0;
+	display: block;
+}
+.s-bnt{
+	width: 60px;
+	height: 30px;
+	border-radius: 5px;
+	border: 0.2px solid #95a5a6;
+	float: left;
+	margin-left: 3px;
+}
+.login{
+	float: right;
+	margin-right: 50px;
+}
+.login a {
+	display: block;
+	text-decoration: none;
+}
+.login button{
+	height: 30px;
+	border-radius: 5px;
+	border: 0.5px solid #222f3e;
+}
+
+#logo:hover {
+	background-color: white;
 }
