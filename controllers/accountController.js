@@ -5,6 +5,15 @@ var restrict = require('../middle-wares/restrict');
 
 var router = express.Router();
 
+router.get('/', (req, res) => {
+    accountModel.loadAll().then(rows => {
+        var vm = {
+            users: rows
+        };
+        res.render('account/index', vm);
+    });
+});
+
 router.get('/login', (req, res) => {
     res.render('account/login');
 });

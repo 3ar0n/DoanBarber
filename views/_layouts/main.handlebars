@@ -73,10 +73,9 @@
 						</a>
 						<ul class="dropdown-menu">
                             <li><a href="/account/profile">Profile</a></li>
-                            <li role="presentation" class="divider"></li>
                             {{#if layoutVM.curUser.isAdmin}}
-                            <li><a href="#">Dashboard</a></li>
                             {{else}}
+                            <li role="presentation" class="divider"></li>
                             <li><a href="/cart">Giỏ hàng</a></li>
                             <li><a href="#">Đặt chỗ</a></li>
                             {{/if}}
@@ -98,14 +97,15 @@
 	</nav>
     <div class="col-md-2">
         {{#if layoutVM.curUser.isAdmin}}
-        <div class="panel panel-default">
+        <div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">Dashboard</h3>
 					</div>
 					<div class="list-group">
-						<a href="#" class="list-group-item">Người dùng</a>
-						<a href="/category" class="list-group-item">Danh mục</a>
-						<a href="#" class="list-group-item">Sản phẩm</a>
+						<a href="/account" class="list-group-item">👤 Người dùng</a>
+						<a href="/category" class="list-group-item">📋 Danh mục</a>
+						<a href="#" class="list-group-item">🛒 Sản phẩm</a>
+                        <a href="#" class="list-group-item">💄 Dịch vụ</a>
 					</div>
 				</div>
         {{else}}
