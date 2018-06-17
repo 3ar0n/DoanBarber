@@ -84,19 +84,13 @@ router.post('/register', (req, res) => {
 
 
 router.get('/profile', restrict, (req, res) => {
-    // console.log(req.session.user);
-    accountModel.load(req.session.user).then(rows => {
+    accountModel.load(res.locals.layoutVM.curUser).then(rows => {
+        req.session.user = rows[0];
         var vm = {
-            User: req.session.user
+            User: rows[0]
         };
-        //console.log(vm);
         res.render('account/profile', vm);
-     });
-    //var user = req.session.user;
-    //var vm = {
-    //     User: user
-    //}
-    //res.render('account/profile', vm);
+    });
 });
 
 router.post('/profile', restrict, (req, res) => {
@@ -144,7 +138,8 @@ router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
     // req.session.cart = [];
-    res.redirect(req.headers.referer);
+    //res.redirect(req.headers.referer);
+    res.redirect('/');
 });
 
 module.exports = router;

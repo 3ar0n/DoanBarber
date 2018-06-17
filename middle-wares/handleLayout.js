@@ -15,7 +15,6 @@ module.exports = (req, res, next) => {
         };
 
         // console.log(res.locals.layoutVM.curUser);
-
         next();
     });
 };
