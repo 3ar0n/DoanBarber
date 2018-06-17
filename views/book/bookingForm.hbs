@@ -1,21 +1,15 @@
-{{#section 'title'}} Đặt chỗ {{/section}} {{#section 'css'}}
-<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+{{#section 'title'}}
+Đặt chỗ
+{{/section}}
 
-<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
-/> {{/section}} {{#section 'js'}}
-<script src="assets/jquery-3.3.1.min.js"></script>
-<script src="assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<!-- Include jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+{{#section 'css'}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.css"/>
+{{/section}}
 
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
-/>
-
+{{#section 'js'}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.css"/>
 <script>
     $(document).ready(function () {
         var date_input = $('input[name="date"]'); //our date input has the name "date"
@@ -28,52 +22,52 @@
             orientation: "bottom left"
         })
     })
-</script> {{/section}}
+</script>
+{{/section}}
 
+{{#with User}}
 <div class="booking">
-    <h1>Phiếu đặt chỗ</h1>
     <form class="form-horizontal" method="post">
-
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Khách hàng</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">Nguyễn Trí Thâm</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="service" class="col-sm-2 control-label">Dịch vụ</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="service" placeholder="hớt tóc,...">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="time" class="col-sm-2 control-label">Giờ đến</label>
-                    <div class="col-sm-8">
-                        <input class="col-md-8" id="time" name="time" placeholder="10h sáng" type="text" />
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <!-- Date input -->
-                    <label for="date" class="col-sm-2 control-label">Ngày đến</label>
-                    <div class="col-sm-8">
-                        <input class="col-md-8" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-5 col-sm-8">
-                        <button type="submit" class="btn btn-default">Đặt chỗ</button>
-                    </div>
-                </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Khách hàng</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{username}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="service" class="col-sm-2 control-label">Dịch vụ</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="service" placeholder="hớt tóc,...">
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="time" class="col-sm-2 control-label">Giờ đến</label>
+            <div class="col-sm-8">
+                <input class="col-md-8" id="time" name="time" placeholder="10h sáng" type="text" />
+            </div>
+    
+        </div>
+    
+        <div class="form-group">
+            <!-- Date input -->
+            <label for="date" class="col-sm-2 control-label">Ngày đến</label>
+            <div class="col-sm-8">
+                <input class="col-md-8" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+            </div>
+    
+        </div>
+    
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <button type="submit" class="btn btn-success">Đặt chỗ</button>
             </div>
         </div>
 
-
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+            </div>
+        </div>
     </form>
 </div>
+{{/with}}

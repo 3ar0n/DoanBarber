@@ -85,20 +85,18 @@ router.post('/register', (req, res) => {
 
 router.get('/profile', restrict, (req, res) => {
     // console.log(req.session.user);
-    // accountModel.load(req.session.user).then(rows => {
-    //     console.log(rows);
-    //     var vm = {
-    //         User: rows
-    //     };
-    //     console.log(vm);
-    //     res.render('account/profile', vm);
-    // });
-    var user = req.session.user;
-    //console.log(user);
-    var vm = {
-         User: user
-     }
-    res.render('account/profile', vm);
+    accountModel.load(req.session.user).then(rows => {
+        var vm = {
+            User: req.session.user
+        };
+        //console.log(vm);
+        res.render('account/profile', vm);
+     });
+    //var user = req.session.user;
+    //var vm = {
+    //     User: user
+    //}
+    //res.render('account/profile', vm);
 });
 
 router.post('/profile', restrict, (req, res) => {
