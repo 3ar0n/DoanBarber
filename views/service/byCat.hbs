@@ -1,8 +1,4 @@
-{{#section 'title'}}
-	Dịch vụ
-{{/section}}
-
-{{#if noServices}}
+{{#section 'title'}} Dịch vụ {{/section}} {{#if noServices}}
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-lg-12">
 		Không có dịch vụ thoả yêu cầu.
@@ -13,21 +9,22 @@
 	{{#each services}}
 	<div class="col-sm-6 col-md-4">
 		<div class="thumbnail">
-			{{!-- <img src="/img/service/{{ProID}}/main_thumbs.jpg" alt="{{ProName}}" title="{{ProName}}"> --}}
-			<img src="/img/service/{{catID}}/{{serID}}.jpg" alt="{{serName}}" title="{{serName}}" style="width: 330px; height: 218px ">
+			<img src="/img/service/{{catID}}/{{serID}}.jpg" alt="{{serName}}" title="{{serName}}" style="width: 330px; height: 218px">
 			<div class="caption">
 				<h4>{{serName}}</h4>
-				<h4>{{number_format serPrice}}</h4>
+				<h4>{{number_format serPrice}}
+					<span>&#8363;</span>
+				</h4>
 				<p style="min-height: 10px">{{{serInfo}}}</p>
-				<p>
-					<a href="/service/detail/{{serID}}" class="btn btn-primary" role="button">
-						<span class="glyphicon glyphicon-eye-open"></span>
-						Details
-					</a>
-					<a href="#" class="btn btn-danger" role="button">
-						<span class="glyphicon glyphicon-shopping-cart"></span>
-					</a>
-				</p>
+				<div class="row">
+					<div class="col-sm-2 col-sm-offset-8">
+						<a href="/service/detail/{{serID}}" class="btn btn-info" role="button">
+							<span class="glyphicon glyphicon-info-sign"></span>
+							Chi tiết
+						</a>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -35,17 +32,24 @@
 </div>
 <ul class="pagination">
 	<li class="disabled">
-		<a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+		<a href="#" aria-label="Previous">
+			<span aria-hidden="true">«</span>
+		</a>
 	</li>
-	{{#each page_numbers}}
-		{{#if isCurPage}}
-			<li class="active"><a href="javascript:;">{{value}}</a></li>
-		{{else}}
-			<li><a href="?page={{value}}">{{value}}</a></li>
-		{{/if}}
-	{{/each}}
+	{{#each page_numbers}} {{#if isCurPage}}
+	<li class="active">
+		<a href="javascript:;">{{value}}</a>
+	</li>
+	{{else}}
 	<li>
-		<a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-	</ul>
+		<a href="?page={{value}}">{{value}}</a>
+	</li>
+	{{/if}} {{/each}}
+	<li>
+		<a href="#" aria-label="Next">
+			<span aria-hidden="true">»</span>
+		</a>
+	</li>
+</ul>
 </nav>
 {{/if}}

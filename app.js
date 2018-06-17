@@ -14,6 +14,7 @@ const   accountController = require('./controllers/accountController'),
         homeController = require('./controllers/homeController'),
         productController = require('./controllers/productController'),
         serviceController = require('./controllers/serviceController'),
+        bookController = require('./controllers/bookController'),
         categoryController = require('./controllers/categoryController');
 
 // Middle-wares
@@ -30,7 +31,7 @@ app.engine('hbs', exphbs({
         section: express_handlebars_sections(),
         number_format: n => {
             var nf = wnumb({
-                thousand: ','
+                thousand: '.'
             });
             return nf.to(n);
         }
@@ -86,6 +87,7 @@ app.use('/category', categoryController);
 app.use('/cart', restrict, cartController);
 app.use('/product', productController);
 app.use('/service', serviceController);
+app.use('/book', bookController);
 
 app.use(handle404MDW);
 

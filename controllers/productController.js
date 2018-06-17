@@ -49,7 +49,7 @@ router.get('/detail/:proId', (req, res) => {
     productModel.single(proId).then(rows => {
         if (rows.length > 0) {
             var vm = {
-                product: rows[0]
+                products: rows[0]
             }
             res.render('product/detail', vm);
         } else {

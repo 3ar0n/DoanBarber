@@ -1,17 +1,17 @@
 {{#section 'title'}}
-	Chi tiết sản phẩm
+	Chi tiết dịch vụ
 {{/section}}
 
 {{#with services}}
 <div class="row">
-	<div class="col-md-12">
-		<img src="/img/service/{{catID}}/{{serID}}.jpg" />
+	<div class="col-md-6 col-md-offset-3 thumbnail">
+		<img src="/img/service/{{catID}}/{{serID}}.jpg" style="height: 460px"/>
 	</div>
 	<div class="col-md-12 caption-lg-orange">
 		<h3>{{serName}}</h3>
 	</div>
 	<div class="col-md-12 padding">
-		<span class="caption-lg-red">Giá bán: {{number_format serPrice}}</span>
+		<span class="caption-lg-red">Giá: {{number_format serPrice}} <span>&#8363;</span> </span>
 	</div>
 	<div class="col-md-12 padding">
 		{{{serInfo}}}
