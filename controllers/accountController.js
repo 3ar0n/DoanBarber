@@ -55,10 +55,11 @@ router.post('/register', (req, res) => {
     var user = {
         username: req.body.username,
         password: req.body.rawPWD,
-        type: 0,
-        block: 0,
+        isAdmin: 0,
+        isBlock: 0,
         opendate: todayString,
-        fullName: fullName,
+        fullname: fullName,
+        gender: req.body.gender,
         phone: req.body.phone,
         email: req.body.email,
         address: req.body.address
@@ -71,39 +72,62 @@ router.post('/register', (req, res) => {
 
 
 router.get('/profile', restrict, (req, res) => {
+    // console.log(req.session.user);
+    // accountModel.load(req.session.user).then(rows => {
+    //     console.log(rows);
+    //     var vm = {
+    //         User: rows
+    //     };
+    //     console.log(vm);
+    //     res.render('account/profile', vm);
+    // });
     var user = req.session.user;
     console.log(user);
     var vm = {
-        User: user
-    }
+         User: user
+     }
     res.render('account/profile', vm);
-    /*accountModel.load(user).then(info => {
-        var vm = {
-            User: info,
-        };
-        res.render('account/profile', vm);
-    });*/
 });
 
 router.post('/profile', restrict, (req, res) => {
-    // tạm thời chưa xét tính đúng sai của mật khẩu cũ
-    if (req.body.newPwd === req.body.cmpPwd) {
+    if (req.body.newPwd === '') {
+        console.log('thanh cong');
         var user = {
-            password: req.body.newPwd,
+            username: req.session.user.username,
+            password: req.session.user.password,
             fullname: req.body.fullname,
+            gender: req.body.gender,
             phone: req.body.phone,
+            email: req.body.email,
             address: req.body.address
         };
         accountModel.update(user).then(value => {
-            res.render('account/profile');
+            res.redirect('/');
         });
     } else {
-        var vm = {
-            showError: true,
-            errorMsg: 'Update fail'
+        if (req.body.newPwd === req.body.cmpPwd) {
+            console.log('doi mat khau');
+            var user = {
+                username: req.session.user.username,
+                password: req.body.newPwd,
+                fullname: req.body.fullname,
+                gender: req.body.gender,
+                phone: req.body.phone,
+                email: req.body.email,
+                address: req.body.address
+            };
+            accountModel.update(user).then(value => {
+            res.render('account/profile');
+            });
+        } else {
+            console.log('that bai');
+            var vm = {
+                isError: true,
+                errorMsg: 'fail'
+            };
+            res.render('account/profile', vm);
         };
-        res.render('account/profile', vm);
-    }
+    };
 });
 
 router.post('/logout', (req, res) => {
