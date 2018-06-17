@@ -5,6 +5,15 @@ var config = require('../config/config');
 
 var router = express.Router();
 
+router.get('/', (req, res) => {
+    productModel.loadAll().then(rows => {
+        var vm = {
+            products: rows
+        };
+        res.render('product/index', vm);
+    });
+});
+
 router.get('/byCat/:catId', (req, res) => {
     var catId = req.params.catId;
 

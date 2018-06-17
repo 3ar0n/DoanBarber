@@ -104,21 +104,21 @@
 					<div class="list-group">
 						<a href="/account" class="list-group-item">👤 Người dùng</a>
 						<a href="/category" class="list-group-item">📋 Danh mục</a>
-						<a href="#" class="list-group-item">🛒 Sản phẩm</a>
-                        <a href="#" class="list-group-item">💄 Dịch vụ</a>
+						<a href="/product" class="list-group-item">⭐ Sản phẩm</a>
+                        <a href="/service" class="list-group-item">💄 Dịch vụ</a>
 					</div>
 				</div>
         {{else}}
         <ul class="nav nav-pills nav-stacked">
             <li>
                 <a id="logo" href="/">
-                    <img src="/img/logo/logo.png">
+                    <img src="/img/logo/logo.png" id="logo">
                 </a>
             </li>
             {{#each layoutVM.categories}} {{#if isService}}
-            <li><a href="/service/byCat/{{catID}}">{{catName}}</a></li>
+            <li><a href="/service/byCat/{{catID}}"><b>{{catName}}</b></a></li>
             {{else}}
-            <li><a href="/product/byCat/{{catID}}">{{catName}}</a></li>
+            <li><a href="/product/byCat/{{catID}}"><b>{{catName}}</b></a></li>
             {{/if}} {{/each}}
             <li>
                 <a href="/home/about">Giới thiệu</a>
