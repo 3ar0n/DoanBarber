@@ -7,7 +7,7 @@ exports.loadAll = () => {
 }
 
 exports.loadAllByCat = (catId, offset) => {
-    var sql = `select * from products where CatID = ${catId} limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+    var sql = `select * from products where CatID = ${catId} limit ${config.ITEMS_PER_PAGE} offset ${offset}`;
     return database.load(sql);
 }
 
