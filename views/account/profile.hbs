@@ -1,31 +1,20 @@
-{{#section 'title'}}
-	DoanHairStylist - Thông tin cá nhân
-{{/section}}
-
-{{#if showError}}
+{{#section 'title'}} DoanHairStylist - Thông tin cá nhân {{/section}} {{#if showError}}
 <div class="alert alert-danger">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<strong>{{Msg}}</strong> 
+	<strong>{{Msg}}</strong>
 </div>
-{{/if}}
-
-{{#if showSuccess}}
+{{/if}} {{#if showSuccess}}
 <div class="alert alert-success">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<strong>{{Msg}}</strong> 
+	<strong>{{Msg}}</strong>
 </div>
-{{/if}}
-
-{{#with User}}
+{{/if}} {{#with User}}
 <form class="form-horizontal" action="" method="POST" role="form">
 	<div class="form-group">
 		<label for="txtUsername" class="col-sm-2 control-label">Tên đăng nhập</label>
 		<div class="col-sm-10">
-      		<p class="form-control-static">{{username}}</p>
-    	</div>
-		{{!-- <div class="col-sm-4">
-			<input type="text" class="form-control" id="txtUsername" name="username" value="{{username}}" readonly>
-		</div> --}}
+			<p class="form-control-static">{{username}}</p>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="txtFullName" class="col-sm-2 control-label">Họ tên</label>
@@ -34,20 +23,21 @@
 		</div>
 	</div>
 	<div class="form-group">
-        <label for="txtGender" class="col-sm-2 control-label">Giới tính</label>
-        {{!-- <div class="col-sm-4">
-            <input type="text" class="form-control" id="txtGender" name="gender" value="{{gender}}">
-        </div> --}}
+		<label for="txtGender" class="col-sm-2 control-label">Giới tính</label>
 		<div class="col-sm-4" data-toggle="button">
 			{{#if gender}}
-			<label class="radio-inline"><input type="radio" name="gender" value="1" checked>Nam</label>
-			<label class="radio-inline"><input type="radio" name="gender" value="0">Nữ</label>
+			<label class="radio-inline">
+				<input type="radio" name="gender" value="1" checked>Nam</label>
+			<label class="radio-inline">
+				<input type="radio" name="gender" value="0">Nữ</label>
 			{{else}}
-			<label class="radio-inline"><input type="radio" name="gender" value="1">Nam</label>
-			<label class="radio-inline"><input type="radio" name="gender" value="0" checked>Nữ</label>
+			<label class="radio-inline">
+				<input type="radio" name="gender" value="1">Nam</label>
+			<label class="radio-inline">
+				<input type="radio" name="gender" value="0" checked>Nữ</label>
 			{{/if}}
 		</div>
-    </div>
+	</div>
 	<div class="form-group">
 		<label for="txtPhone" class="col-sm-2 control-label">Số điện thoại</label>
 		<div class="col-sm-4">

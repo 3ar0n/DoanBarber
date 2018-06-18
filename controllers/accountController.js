@@ -89,6 +89,8 @@ router.post('/register', (req, res) => {
             done: true
         }
         res.render('account/register', vm);
+    }).catch(err => {
+        res.end('fail');
     });
 });
 
@@ -122,6 +124,8 @@ router.post('/profile', restrict, (req, res) => {
                 Msg: 'Cập nhật thông tin thành công'
             };
             res.render('account/profile', vm);
+        }).catch(err => {
+            res.end('fail');
         });
     } else {
         if (req.body.newPwd === req.body.cmpPwd) {
@@ -142,6 +146,8 @@ router.post('/profile', restrict, (req, res) => {
                     Msg: 'Cập nhật thông tin thành công'
                 };
                 res.render('account/profile', vm);
+            }).catch(err => {
+                res.end('fail');
             });
         } else {
             //console.log('that bai');

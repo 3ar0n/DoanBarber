@@ -1,47 +1,37 @@
-{{#section 'title'}}
-	DoanHairStylist - Đăng ký
-{{/section}}
+{{#section 'title'}} DoanHairStylist - Đăng ký {{/section}} {{#section 'css'}}
+<link rel="stylesheet" type="text/css" href="/assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"> {{/section}} {{#section 'js'}}
+<script src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+    $('#txtDOB').datepicker({
+        format: 'd/m/yyyy',
+        autoclose: true
+    });
 
-{{#section 'css'}}
-	<link rel="stylesheet" type="text/css" href="/assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
-{{/section}}
+    var validate = function () {
+        if ($('#txtUsername').val().length === 0) {
+            alert('Error');
+            return false;
+        }
 
-{{#section 'js'}}
-	<script src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-	<script type="text/javascript">
-		$('#txtDOB').datepicker({
-			format: 'd/m/yyyy',
-			autoclose: true
-		});
+        if ($('#txtPWD').val() !== $('#txtCPWD').val()) {
+            alert('not match');
+            return false;
+        }
 
-		var validate = function() {
-		    if ($('#txtUsername').val().length === 0) {
-		        alert('Error');
-		        return false;
-		    }
-
-		    if ($('#txtPWD').val() !== $('#txtCPWD').val()) {
-		        alert('not match');
-		        return false;
-		    }
-
-		    return true;
-		}
-	</script>
-{{/section}}
-
-{{#if done}}
+        return true;
+    }
+</script> {{/section}} {{#if done}}
 <div class="alert alert-success">
-	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<strong>Title!</strong> Đăng ký thành công!
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Title!</strong> Đăng ký thành công!
 </div>
 <a class="btn btn-primary" href="/account/login" role="button">
-		<span class="glyphicon glyphicon-arrow-left"></span>
-		Trang đăng nhập
-	</a>
+    <span class="glyphicon glyphicon-arrow-left"></span>
+    Trang đăng nhập
+</a>
 {{else}}
 <form action="" method="POST" class="form-horizontal" role="form" onsubmit="return validate();">
-	<div class="form-group">
+    <div class="form-group">
         <label for="txtUsername" class="col-sm-2 control-label">Tên đăng nhập</label>
         <div class="col-sm-4">
             <input type="text" class="form-control" id="txtUsername" placeholder="Tên đăng nhập" name="username">
@@ -68,9 +58,11 @@
     <div class="form-group">
         <label for="txtGender" class="col-sm-2 control-label">Giới tính</label>
         <div class="col-sm-4" data-toggle="button">
-			<label class="radio-inline"><input type="radio" name="gender" value="1" checked>Nam</label>
-			<label class="radio-inline"><input type="radio" name="gender" value="0">Nữ</label>
-		</div>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="1" checked>Nam</label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="0">Nữ</label>
+        </div>
     </div>
     <div class="form-group">
         <label for="txtPhone" class="col-sm-2 control-label">Số điện thoại</label>
@@ -90,13 +82,13 @@
             <input type="text" class="form-control" id="txtAddress" placeholder="Địa chỉ" name="address">
         </div>
     </div>
-	<div class="form-group">
-		<div class="col-sm-10 col-sm-offset-2">
-			<button type="submit" class="btn btn-success">
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success">
                 <span class="glyphicon glyphicon-check"></span>
-				Đăng ký
-			</button>
-		</div>
-	</div>
+                Đăng ký
+            </button>
+        </div>
+    </div>
 </form>
 {{/if}}

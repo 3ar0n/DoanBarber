@@ -1,16 +1,12 @@
-{{#section 'title'}}
-	Dashboard - Services
-{{/section}}
-
-{{#if layoutVM.curUser.isAdmin}}
+{{#section 'title'}} Dashboard - Services {{/section}} {{#if layoutVM.curUser.isAdmin}}
 <table class="table table-hover">
 	<thead>
 		<tr>
 			<th>ID</th>
 			<th>Tên</th>
-            <th>Loại</th>
-            <th>Thông tin</th>
-            <th>Giá</th>
+			<th>Loại</th>
+			<th>Thông tin</th>
+			<th>Giá</th>
 			<th class="col-md-1">&nbsp;</th>
 		</tr>
 	</thead>
@@ -19,11 +15,11 @@
 		<tr>
 			<td>{{serID}}</td>
 			<td>{{serName}}</td>
-            <td>{{catID}}</td>
-            <td>{{serInfo}}</td>
-            <td>{{serPrice}}</td>
+			<td>{{catID}}</td>
+			<td>{{serInfo}}</td>
+			<td>{{serPrice}}</td>
 			<td class="text-right">
-				<a class="btn btn-danger btn-xs" href="/category/delete?id={{serID}}" role="button">
+				<a class="btn btn-danger btn-xs" href="/service/delete?id={{serID}}" role="button">
 					<span class="glyphicon glyphicon-remove"></span>
 				</a>
 				<a class="btn btn-primary btn-xs" href="/service/edit?id={{serID}}" role="button">
@@ -39,11 +35,3 @@
 	Thêm dịch vụ mới
 </a>
 {{/if}}
-
-
-
-
-
-
-
-
