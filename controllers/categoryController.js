@@ -32,14 +32,16 @@ router.post('/add', (req, res) => {
 
 router.get('/delete', (req, res) => {
     var vm = {
-        CatId: req.query.id
+        catId: req.query.id
     }
     res.render('category/delete', vm);
 });
 
 router.post('/delete', (req, res) => {
-    categoryModel.delete(req.body.CatId).then(value => {
+    categoryModel.delete(req.body.catId).then(value => {
         res.redirect('/category');
+    }).catch(err => {
+        res.end('fail');
     });
 });
 
@@ -56,6 +58,8 @@ router.get('/edit', (req, res) => {
 router.post('/edit', (req, res) => {
     categoryModel.update(req.body).then(value => {
         res.redirect('/category');
+    }).catch(err => {
+        res.end('fail');
     });
 });
 

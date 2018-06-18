@@ -64,4 +64,14 @@ router.get('/detail/:serId', (req, res) => {
     });
 });
 
+router.get('/edit', (req, res) => {
+    serviceModel.single(req.query.id).then(c => {
+    	// console.log(c);
+        var vm = {
+            Service: c
+        };
+        res.render('service/edit', vm);
+    });
+});
+
 module.exports = router;

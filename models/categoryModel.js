@@ -7,7 +7,7 @@ exports.loadAll = () => {
 
 exports.single = (id) => {
     return new Promise((resolve, reject) => {
-        var sql = `select * from categories where CatID = ${id}`;
+        var sql = `select * from categories where catID = ${id}`;
         db.load(sql).then(rows => {
             if (rows.length === 0) {
                 resolve(null);
@@ -21,16 +21,16 @@ exports.single = (id) => {
 }
 
 exports.add = (c) => {
-    var sql = `insert into categories(CatName) values('${c.CatName}')`;
+    var sql = `insert into categories(catName, isService) values('${c.catName}', '${c.isService}')`;
     return db.save(sql);
 }
 
 exports.delete = (id) => {
-    var sql = `delete from categories where CatID = ${id}`;
+    var sql = `delete from categories where catID = ${id}`;
     return db.save(sql);
 }
 
 exports.update = (c) => {
-    var sql = `update categories set CatName = '${c.CatName}' where CatID = ${c.CatId}`;
+    var sql = `update categories set catName = '${c.catName}' where catID = ${c.catId}`;
     return db.save(sql);
 }

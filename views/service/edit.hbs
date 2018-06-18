@@ -1,0 +1,33 @@
+{{#section 'title'}}
+	Edit Service
+{{/section}}
+
+{{#with Service}}
+<form action="" method="POST" role="form">
+	<div class="form-group">
+		<label for="">ID</label>
+		<input type="text" class="form-control" id="" name="serID" value="{{serID}}" readonly>
+	</div>
+	<div class="form-group">
+		<label for="">Name</label>
+		<input type="text" class="form-control" id="" name="serName" value="{{serName}}">
+	</div>
+    <div class="form-group">
+		<label for="">Info</label>
+		<input type="text" class="form-control" id="" name="serInfo" value="{{serInfo}}">
+	</div>
+    <div class="form-group">
+		<label for="">Price</label>
+		<input type="text" class="form-control" id="" name="serPrice" value="{{serPrice}}">
+	</div>
+
+	<a class="btn btn-default" href="/service" role="button">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+		View List
+	</a>
+	<button type="submit" class="btn btn-primary">
+		<span class="glyphicon glyphicon-save"></span>
+		Update
+	</button>
+</form>
+{{/with}}
