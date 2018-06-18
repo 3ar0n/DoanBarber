@@ -14,6 +14,16 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+    // update user's {{isBlock}} here, then reload info
+    accountModel.loadAll().then(rows => {
+        var vm = {
+            users: rows
+        };
+        res.render('account/index', vm);
+    });
+});
+
 router.get('/login', (req, res) => {
     res.render('account/login');
 });
@@ -95,7 +105,7 @@ router.get('/profile', restrict, (req, res) => {
 
 router.post('/profile', restrict, (req, res) => {
     if (req.body.newPwd === '') {
-        console.log('thanh cong');
+        //console.log('thanh cong');
         var user = {
             username: req.session.user.username,
             password: req.session.user.password,
@@ -106,11 +116,16 @@ router.post('/profile', restrict, (req, res) => {
             address: req.body.address
         };
         accountModel.update(user).then(value => {
-            res.redirect('/');
+            var vm = {
+                showError: false,
+                showSuccess: true,
+                Msg: 'Cập nhật thông tin thành công'
+            };
+            res.render('account/profile', vm);
         });
     } else {
         if (req.body.newPwd === req.body.cmpPwd) {
-            console.log('doi mat khau');
+            //console.log('doi mat khau');
             var user = {
                 username: req.session.user.username,
                 password: req.body.newPwd,
@@ -121,13 +136,19 @@ router.post('/profile', restrict, (req, res) => {
                 address: req.body.address
             };
             accountModel.update(user).then(value => {
-            res.render('account/profile');
+                var vm = {
+                    showError: false,
+                    showSuccess: true,
+                    Msg: 'Cập nhật thông tin thành công'
+                };
+                res.render('account/profile', vm);
             });
         } else {
-            console.log('that bai');
+            //console.log('that bai');
             var vm = {
-                isError: true,
-                errorMsg: 'fail'
+                showError: true,
+                showSuccess: false,
+                Msg: 'Cập nhật thông tin thất bại'
             };
             res.render('account/profile', vm);
         };

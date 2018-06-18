@@ -81,3 +81,11 @@ input[type=text] {
 	margin-top: 170px;
 	text-align: center;
 }
+
+img.homeBackground {
+	position: fixed;
+	top: 20px;
+	right: 0;
+	width: 83%;
+	height:auto;
+}

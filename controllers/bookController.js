@@ -5,17 +5,21 @@ var accountModel = require('../models/accountModel');
 var router = express.Router();
 
 router.get('/', (req, res) => {
-    accountModel.load(req.session.user).then(rows => {
+    accountModel.load(res.locals.layoutVM.curUser).then(rows => {
         if (rows.length > 0) {
             var vm = {
-                User: req.session.user
+                User: rows[0]
             };
             res.render('book/bookingForm', vm);
         } else {
-            res.render('/');
+            res.redirect('/');
         }
     });
     //res.render('book/bookingForm');
+});
+
+router.post('/', (req, res) => {
+    res.redirect('/');
 });
 
 module.exports = router;

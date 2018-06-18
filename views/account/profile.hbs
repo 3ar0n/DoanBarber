@@ -1,11 +1,18 @@
 {{#section 'title'}}
-	Thông tin cá nhân
+	DoanHairStylist - Thông tin cá nhân
 {{/section}}
 
 {{#if showError}}
 <div class="alert alert-danger">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<strong>Title!</strong> {{errorMsg}}
+	<strong>{{Msg}}</strong> 
+</div>
+{{/if}}
+
+{{#if showSuccess}}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>{{Msg}}</strong> 
 </div>
 {{/if}}
 
